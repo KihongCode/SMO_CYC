@@ -6,7 +6,7 @@ import mplhelv
 from tqdm.notebook import tqdm
 tol_cmap = tc.tol_cmap('rainbow_PuBr')
 import pickle
-
+from free_energy_plot import free_energy_plot, gap
 
 ## Load MSM weights
 
