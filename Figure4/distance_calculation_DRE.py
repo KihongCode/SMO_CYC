@@ -4,6 +4,7 @@ import numpy as np
 import mdtraj as md
 import os
 
+
 for i in range(0,250):
     print(i)
     if os.path.exists(f'./DREnpy/RUN6_CLONE{i}_Distances.npy'):
