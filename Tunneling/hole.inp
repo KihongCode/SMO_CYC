@@ -1,0 +1,8 @@
+coord /home/kihongk2/hole/82/Inactive_frames/Inactive_Run0_4627.pdb      ! Co-ordinates in pdb format
+radius /home/kihongk2/hole/hole2/rad/simple.rad  ! Use simple AMBER vdw radii
+                ! n.b. can use ~ in hole
+!
+! now optional cards
+sphpdb /home/kihongk2/hole/82/sph_inac/hole_msm_input_4999.sph      ! pdb format output of hole sphere centre info
+cvect 0.0 0.0 1.0        ! channel runs in Z direction
+cpoint -5.696 -1.2703 14.079
