@@ -3,6 +3,7 @@ import tol_colors as tc
 from pdb3 import lsext
 import mplhelv
 from tqdm.notebook import tqdm
+from free_energy_plot import free_energy_plot, gap
 tol_cmap = tc.tol_cmap('rainbow_PuBr')
 import pickle
 
