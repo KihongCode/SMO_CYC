@@ -14,6 +14,9 @@ from free_energy_plot import free_energy_plot, gap
 
 tol_cmap = tc.tol_cmap('rainbow_PuBr')
 
+
+## load the 57 computed distances of inactive & active pdb structures
+
 data1 = np.load('Sys8_HMass_Distances.npy')[0]
 data2 = np.load('Sys2_HMass_Distances.npy')[0]
 projection1 = tica.transform(data1)
