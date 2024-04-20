@@ -13,7 +13,7 @@ for i in range(0,250):
     except OSError:
             continue
 
-  ## 0th corresponds to D-R distance, 1st corresponds to W-M distance
+  ## 0th corresponds to W-M distance, 1st corresponds to D-R distance
   
     contacts = [[281,391],[342,415],[342,460],[415,460]]
 
