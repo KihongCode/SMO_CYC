@@ -12,9 +12,21 @@ from deeptime.clustering import KMeans
 import pickle
 from free_energy_plot import free_energy_plot, gap
 
+tol_cmap = tc.tol_cmap('rainbow_PuBr')
+
+data1 = np.load('Sys8_HMass_Distances.npy')[0]
+data2 = np.load('Sys2_HMass_Distances.npy')[0]
+projection1 = tica.transform(data1)
+projection2 = tica.transform(data2)
+
+## load the MSM weights
+
+weights = np.concatenate(pickle.load(open(f'./Dtraj_Weights/weights_150_40.pkl','rb')))
+
+
 ## load the 57 computed distances of inactive & active ensembles 
 
-npys = lsext('./57npy_14940/','.npy')[0]+lsext('./57npy_14952/','.npy')[0]
+npys = lsext('./57npy_14953/','.npy')[0]+lsext('./57npy_14941/','.npy')[0]
 
 total_data = []
 for npy in tqdm(npys):
