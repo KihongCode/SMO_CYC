@@ -27,7 +27,7 @@ projection2 = tica.transform(data2)
 weights = np.concatenate(pickle.load(open(f'./Dtraj_Weights/weights_150_40.pkl','rb')))
 
 
-## load the 57 computed distances of inactive & active ensembles 
+## load the 57 computed distances of inactive & active MD trajectories
 
 npys = lsext('./57npy_14953/','.npy')[0]+lsext('./57npy_14941/','.npy')[0]
 
