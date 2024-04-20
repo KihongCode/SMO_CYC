@@ -10,7 +10,7 @@ from tqdm import tqdm
 from deeptime.decomposition import TICA
 from deeptime.clustering import KMeans
 import pickle
-
+from free_energy_plot import free_energy_plot, gap
 
 ## load the 57 computed distances of inactive & active ensembles 
 
