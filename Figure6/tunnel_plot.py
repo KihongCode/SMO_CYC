@@ -8,7 +8,8 @@ tol_cmap = tc.tol_cmap('rainbow_PuBr')
 import pickle
 from free_energy_plot import free_energy_plot, gap
 
-
+d_Active = np.load('./Active/extracted_data_diameter.npy')
+z_Active = np.load('./Active/extracted_first_columns.npy')
 
 l = free_energy_plot(d_Active,-z_Active,vmax=7)#, weightsClassA=weights)
 l[1].set_xlabel('Diameter (Å)',fontsize=20)
