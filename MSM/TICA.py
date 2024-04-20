@@ -12,23 +12,25 @@ from deeptime.clustering import KMeans
 import pickle
 
 
-# load the computed distances of inactive & active ensembles using built-in 'lsext' function
-npys = lsext('./inactive_distances/','.npy')[0]+lsext('./active_distances/','.npy')[0]
+## load the 57 computed distances of inactive & active ensembles 
 
-# store npys into total_data
+npys = lsext('./57npy_14940/','.npy')[0]+lsext('./57npy_14952/','.npy')[0]
+
 total_data = []
 for npy in tqdm(npys):
     y = np.load(npy)
     total_data.append(y)
 
-# construct tica using TICA function
-tica = TICA(lagtime=, var_cutoff=).fit_fetch(np.concatenate(total_data))
+## construct tica using TICA function
+
+tica = TICA(lagtime=300, var_cutoff=40/100).fit_fetch(np.concatenate(total_data))
 
 projection = [tica.transform(x) for x in total_data]
 
 tica_concatenated = np.concatenate(projection)
 
-# use free_energy_plot function to plot the first 2 tICA components (see SMO_CYC/MSM/free_energy_plot.py)
+# use free_energy_plot function to plot the first 2 tICA components
+
 l = free_energy_plot(tica_concatenated[:,0],tica_concatenated[:,1],weightsClassA = weights, vmax = 7)
 l[1].set_xlabel('time-lagged independent component 1',fontsize=20)
 l[1].set_ylabel('time-lagged independent component 2',fontsize=20)
