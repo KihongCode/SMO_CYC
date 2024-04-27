@@ -9,28 +9,28 @@ import pyemma
 dtrajs = pickle.load(open('./Dtraj_Weights/clus_tica_dtrajs_150_40.pkl', 'rb'))
 
 # Using Maximum Likelihood MSM
-msmlove = pyemma.msm.estimate_markov_model(dtrajs, lag=300)
+msm_likelihood = pyemma.msm.estimate_markov_model(dtrajs, lag=300)
 
 # Lists of values for sets A and B
 A = [10,111]
 B = [109,7]
 
-tpt1 = pyemmamsm.tpt(msmlove, A, B).mfpt
+tpt1 = pyemmamsm.tpt(msm_likelihood, A, B).mfpt
 
 A = [10]
 B = [109]
 
-tpt2 = pyemmamsm.tpt(msmlove, A, B).mfpt
+tpt2 = pyemmamsm.tpt(msm_likelihood, A, B).mfpt
 
 A = [10,111]
 B = [109,7]
 
-tpt3 = pyemmamsm.tpt(msmlove, B, A).mfpt
+tpt3 = pyemmamsm.tpt(msm_likelihood, B, A).mfpt
 
 A = [10]
 B = [109]
 
-tpt4 = pyemmamsm.tpt(msmlove, B, A).mfpt
+tpt4 = pyemmamsm.tpt(msm_likelihood, B, A).mfpt
 
 import numpy as np
 
