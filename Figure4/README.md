@@ -4,7 +4,7 @@ distance_calculation_DRE.py computes the 57 inter-residue distances used for ada
 
 Run free_energy_plot.py before running DRE_plot.py
 
-Run DRE_plot.py to plot the WGM movement for each system.
+Run DRE_plot.py to plot the DRE movement for each system.
 
 Trajectories are available on [*Box*](https://uofi.box.com/s/4g3xmumfmesb68y7tb0fn8wvhvycylrf)
 
