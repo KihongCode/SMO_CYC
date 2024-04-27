@@ -1,5 +1,6 @@
 # Figures 2...6
 Scripts for recreating the figures made in the manuscript [Binding Position Dependent Modulation of Smoothened Activity by Cyclopamine](https://www.biorxiv.org/content/10.1101/2024.02.08.579369v1)
+
 Run pdb3.py before running the codes listed in each directory.
 
 # Supplementary
