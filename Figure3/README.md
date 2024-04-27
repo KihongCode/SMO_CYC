@@ -1,6 +1,8 @@
 Scripts used to generate Figure 3 in the manuscript. 
 
-distance_calculation.py computes the 57 inter-residue distances used for adaptive sampling from the trajectories.
+distance_calculation_57.py computes the 57 inter-residue distances used for adaptive sampling from the trajectories (load trajectories for each system in this code).
+
+pdb_distance_calculation_57_CRD/TMD/Dual.py loads the starting .pdb files in inactive and active states to compute the 57 distances.
 
 Run free_energy_plot.py before running WGM_plot.py
 
