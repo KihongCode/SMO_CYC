@@ -10,4 +10,4 @@ tunnel_plot.py plots the diameter and z-coordinates for each system (load .npy f
 
 Trajectories are available on [*Box*](https://uofi.box.com/s/4g3xmumfmesb68y7tb0fn8wvhvycylrf)
 
-Individual npy files used to create the figure are availble on the [*Dryad Repository*](https://doi.org/10.5061/dryad.4b8gthtmf)
+Individual npy files used to create the figure are availble on the [*Dryad Repository*](https://doi.org/doi:10.5061/dryad.4b8gthtmf)
