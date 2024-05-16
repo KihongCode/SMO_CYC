@@ -8,4 +8,4 @@ plot_angle.py generates probability density plots of Y472 dihedral angle movemen
 
 Trajectories are available on [*Box*](https://uofi.box.com/s/4g3xmumfmesb68y7tb0fn8wvhvycylrf)
 
-Individual npy files used to create the figure are availble on the [*Dryad Repository*](https://10.5061/dryad.4b8gthtmf)
+Individual npy files used to create the figure are availble on the [*Dryad Repository*](https://doi.org/doi:10.5061/dryad.4b8gthtmf)
