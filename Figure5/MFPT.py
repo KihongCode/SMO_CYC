@@ -1,74 +1,61 @@
-#Inactive -> Active
-import pyemma.plots as mplt
-import pyemma.msm as pyemmamsm
-import numpy as np
 import pickle
-import pyemma
-
-# Loading dtrajs
-dtrajs = pickle.load(open('./Dtraj_Weights/clus_tica_dtrajs_150_40.pkl', 'rb'))
-
-# Using Maximum Likelihood MSM
-msm_likelihood = pyemma.msm.estimate_markov_model(dtrajs, lag=300)
-
-# Lists of values for sets A and B
-A = [10,111]
-B = [109,7]
-
-tpt1 = pyemmamsm.tpt(msm_likelihood, A, B).mfpt
-
-A = [10]
-B = [109]
-
-tpt2 = pyemmamsm.tpt(msm_likelihood, A, B).mfpt
-
-A = [10,111]
-B = [109,7]
-
-tpt3 = pyemmamsm.tpt(msm_likelihood, B, A).mfpt
-
-A = [10]
-B = [109]
-
-tpt4 = pyemmamsm.tpt(msm_likelihood, B, A).mfpt
-
 import numpy as np
+from tqdm import tqdm
 
-def calculate_stats(tpt1, tpt2):
-    # Convert the inputs to numpy arrays
-    tpt1 = np.array(tpt1)
-    tpt2 = np.array(tpt2)
-    
-    # Calculate the standard deviation
-    std_dev = np.std([tpt1, tpt2])
-    
-    # Calculate the average (mean)
-    average = np.mean([tpt1, tpt2])
-    
-    return std_dev, average
+inactive = [56,73,87]
+intermediate = [145,30,60]
+active = [29,57,53]
 
+inactive_active = []
+active_inactive = []
+inactive_intermediate = []
+intermediate_inactive = []
+intermediate_active = []
+active_intermediate = []
 
+for i in tqdm(range(1, 201), desc="Processing files"):
+    filename = f'/home/kihongk2/MSM_Construction/System19/msm/bt/msm_btsp_56_{i}.pkl'
 
-std_dev, average = calculate_stats(tpt1, tpt2)
-print(f"The standard deviation between tpt1 and tpt2 is: {std_dev}")
-print(f"The average between tpt1 and tpt2 is: {average}")
+    with open(filename, 'rb') as file:
+        msm = pickle.load(file)
 
+        mfpt_inactive_active = msm.mfpt(inactive, active)
+        mfpt_active_inactive = msm.mfpt(active, inactive)
+        mfpt_inactive_intermediate = msm.mfpt(inactive, intermediate)
+        mfpt_intermediate_inactive = msm.mfpt(intermediate, inactive)
+        mfpt_intermediate_active = msm.mfpt(intermediate, active)
+        mfpt_active_intermediate = msm.mfpt(active, intermediate)
 
+        inactive_active.append(mfpt_inactive_active)
+        active_inactive.append(mfpt_active_inactive)
+        inactive_intermediate.append(mfpt_inactive_intermediate)
+        intermediate_inactive.append(mfpt_intermediate_inactive)
+        intermediate_active.append(mfpt_intermediate_active)
+        active_intermediate.append(mfpt_active_intermediate)
 
-def calculate_stats(tpt3, tpt4):
-    # Convert the inputs to numpy arrays
-    tpt3 = np.array(tpt3)
-    tpt4 = np.array(tpt4)
-    
-    # Calculate the standard deviation
-    std_dev = np.std([tpt3, tpt4])
-    
-    # Calculate the average (mean)
-    average = np.mean([tpt3, tpt4])
-    
-    return std_dev, average
+averages = {
+    'inactive_active': np.mean(inactive_active),
+    'active_inactive': np.mean(active_inactive),
+    'inactive_intermediate': np.mean(inactive_intermediate),
+    'intermediate_inactive': np.mean(intermediate_inactive),
+    'intermediate_active': np.mean(intermediate_active),
+    'active_intermediate': np.mean(active_intermediate)
+}
 
+std_devs = {
+    'inactive_active': np.std(inactive_active),
+    'active_inactive': np.std(active_inactive),
+    'inactive_intermediate': np.std(inactive_intermediate),
+    'intermediate_inactive': np.std(intermediate_inactive),
+    'intermediate_active': np.std(intermediate_active),
+    'active_intermediate': np.std(active_intermediate)
+}
 
-std_dev, average = calculate_stats(tpt3, tpt4)
-print(f"The standard deviation between tpt3 and tpt4 is: {std_dev}")
-print(f"The average between tpt3 and tpt4 is: {average}")
+results = {
+    'averages': averages,
+    'std_devs': std_devs
+}
+with open('19_mfpt_averages_stddevs.pkl', 'wb') as f:
+    pickle.dump(results, f)
+
+print("Averages and standard deviations have been saved to '19_mfpt_averages_stddevs.pkl'")
